@@ -12,8 +12,9 @@ export const todosSlice = createSlice({
       state.todos.push(action.payload);
     },
     deleteTodo: (state, action) => {
-      state.todos = state.todos.filter(todo => todo.title !== action.payload.title);
+      state.todos = state.todos.filter(todo => todo.title !== action.payload);
     },
+    
     updateTodo: (state, action) => {
       const index = state.todos.findIndex(todo => todo.title === action.payload.title);
       if (index !== -1) {

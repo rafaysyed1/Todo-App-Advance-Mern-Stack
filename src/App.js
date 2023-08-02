@@ -1,11 +1,12 @@
 import './App.css';
-import {Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Todo from './pages/AddTodos';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
 import MyTodos from './pages/myTodos';
 import Navbar from './components/navbar/navbar';
 import UpdateTodo from './pages/updateTodos';
+
 
 
 function App() {
