@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateTodo } from '../store/todos/todosReducer';
 import { selectTodoByTitle } from '../store/todos/todosSelector';
 import TodoForm from '../components/TodoForm/TodoForm';
+import {toast} from 'react-toastify'
 
 const UpdateTodo = () => {
     const { title: todoTitle } = useParams(); // get todo title from URL
@@ -28,11 +29,19 @@ const UpdateTodo = () => {
 
     const handleSubmit = (todo) => {
         // Dispatch updateTodo action with the todo object
-        dispatch(updateTodo(todo));
-        console.log("Todo has been updated:", todo);
-
-        // After update, redirect to todos page
-        navigate('/myTodos');
+        try {
+            dispatch(updateTodo(todo));
+            console.log("Todo has been updated:", todo);
+            toast.success("You have successfully updated the todo")
+    
+            // After update, redirect to todos page
+            navigate('/myTodos');
+            
+        } catch (error) {
+            console.log("Error occured in updating the todos")
+            toast.error("Failed to Update the Todo")
+        }
+     
     };
 
     return (
